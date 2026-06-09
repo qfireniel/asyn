@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+nav ul {
+    display: flex;
+    padding: 30px ;
+    list-style: none;
+    justify-content: space-between;
+
+}
+nav ul li{
+    padding-right: 20px;
+}
+nav ul div:first-child {
+    display: flex;
+    padding-left: 30px;
+    padding-top: 15px;
+}
+nav ul div:last-child{
+    padding-top: 15px;
+    display: flex;
+}
+nav ul .core-menu{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding-right: 200px ;
+}
+nav ul .core-menu li{
+ 
+          
+}
+nav ul .core-menu li button{
+    background-color:#000000;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 200px;
+}
+
+body {
+  /* Set Titillium Web as primary, fallback to system sans-serif if offline */
+  font-family: 'Titillium Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #ffffff;
+  color: #333;
+}
