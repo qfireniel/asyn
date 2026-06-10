@@ -3,6 +3,7 @@ import logo from "/src/assets/logo.png"
 import user from "/src/assets/user.png"
 import "../styles/admin.css"
 
+
 export const Admin = () =>{
     let teamName = "Aero Contractors LSU"
     let username = "Rachael Adashio"

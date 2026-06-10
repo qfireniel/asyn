@@ -16,10 +16,10 @@ nav ul li{
 nav ul div:first-child {
     display: flex;
     padding-left: 30px;
-    padding-top: 15px;
+    padding-top: 10px;
 }
 nav ul div:last-child{
-    padding-top: 15px;
+    padding-top: 10px;
     display: flex;
 }
 nav ul .core-menu{
@@ -36,8 +36,21 @@ nav ul .core-menu li button{
     background-color:#000000;
     border: none;
     color: white;
-    padding: 15px 30px;
+    padding: 10px 25px;
     border-radius: 200px;
+    font-family: 'Titillium Web';
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+}
+nav ul .core-menu li button{
+   
+}
+nav ul .core-menu li button:hover{
+    background-color: white;
+    color: black;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    
+
 }
 
 body {
