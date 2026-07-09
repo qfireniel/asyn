@@ -1,0 +1,23 @@
+.title-header-team{
+    display: flex;
+    padding-top: 2.5em;    
+}
+
+.title-header-team h2 {
+    font-weight: 400;
+    color: rgb(48, 48, 48);
+    font-size: 15px;
+    line-height: 0.9;
+}
+
+.title-header-team h1 {
+    font-weight: 600;
+    font-size: 35px;
+    padding-right: .5em;
+}
+.title-header-team-right{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}

@@ -13,7 +13,7 @@ export const Dashboard = () => {
             <div className="info-centre">
             <div className="assign-task">
                 <div className="assign-task-top">
-                    <h2>Assign Task</h2>
+                    <h2>Active Tasks</h2>
                     <div className="add-icon-wrapper">
                         <img className="add-icon" src={add} alt="add" height={30} />
                         <img className="add-icon-alt" src={add2} alt="add2" height={30} />
