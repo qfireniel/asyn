@@ -5,24 +5,34 @@ import "../styles/admin.css"
 import { Dashboard } from "./dashboard";
 import { LeftNavbar } from "./left-navbar";
 import { TeamManagement } from "./teamManagement";
+import { Reports } from "./reports";
+import { Emails } from "./emails";
+import { Calendar } from "./calendar";
+import { Messenger } from "./messenger";
+import { Login } from "../pages/login";
 
 
 export const Admin = () =>{
-    let username = "Rachael Adashio"
-    const [activeTab, setActiveTab] = useState("Dashboard");
+    let username = "qfireniel"
+    const [activeTab, setActiveTab] = useState("Login");
 
+    if (activeTab === "Login") {
+        return <Login />;
+    }
     const renderContent = () => {
         switch (activeTab) {
             case "Team Management":
                 return <TeamManagement />;
             case "Reports":
-                return <div>Reports</div>;
+                return <Reports />;
             case "Emails":
-                return <div>Emails</div>;
+                return <Emails />;
             case "Calendar":
-                return <div>Calendar</div>;
+                return <Calendar />;
             case "Messenger":
-                return <div>Messenger</div>;
+                return <Messenger />;
+            case "Login":
+                return <Login />
             default:
                 return <Dashboard />;
         }
@@ -37,6 +47,9 @@ export const Admin = () =>{
                     <nav>
                     <ul>
                         <div>
+                            <li>
+                                <button className="test-login-btn" onClick={() => setActiveTab("Login")}>Test Login</button>
+                            </li>
                         </div>
                         <div className="user-menu">
                         <li>{username}</li>

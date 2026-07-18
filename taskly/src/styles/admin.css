@@ -186,7 +186,9 @@ nav ul .core-menu li button {
     justify-content: space-between;
 }
 .left-navbar__item img{
-    
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
 }
 .left-navbar__item button {
     border: none;
@@ -207,7 +209,11 @@ nav ul .core-menu li button {
 }
 
 .left-navbar__icon{
-  
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
 }
 
 .left-navbar__footer {
