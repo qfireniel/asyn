@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "/src/assets/logo.png";
+import "../styles/left-navbar.css";
 
 export const LeftNavbar = ({ activeTab, onTabChange }) => {
     const tabs = ["Dashboard", "Team Management", "Reports", "Emails", "Calendar", "Messenger"];

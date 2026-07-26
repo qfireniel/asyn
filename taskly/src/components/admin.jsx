@@ -12,13 +12,15 @@ import { Messenger } from "./messenger";
 import { Login } from "../pages/login";
 
 
-export const Admin = () =>{
+export const Admin = ({ initialAuthenticated = false }) =>{
     let username = "qfireniel"
-    const [activeTab, setActiveTab] = useState("Login");
+    const [activeTab, setActiveTab] = useState("Dashboard");
+    const [authenticated, setAuthenticated] = useState(initialAuthenticated);
 
-    if (activeTab === "Login") {
-        return <Login />;
+    if (!authenticated) {
+        return <Login onAuthSuccess={() => setAuthenticated(true)} />;
     }
+
     const renderContent = () => {
         switch (activeTab) {
             case "Team Management":
@@ -40,19 +42,17 @@ export const Admin = () =>{
 
     return(
         <div className="app-shell">
-            <img src={headerArt} className="art" alt="headerart"></img>
+         
             <div className="page-layout">
                 <LeftNavbar activeTab={activeTab} onTabChange={setActiveTab} />
                 <div className="adminComponent">
                     <nav>
                     <ul>
                         <div>
-                            <li>
-                                <button className="test-login-btn" onClick={() => setActiveTab("Login")}>Test Login</button>
-                            </li>
+                            
                         </div>
                         <div className="user-menu">
-                        <li>{username}</li>
+                        
                         <li><img src={user} alt="user" height={30}></img></li>
                         </div>
                     </ul>

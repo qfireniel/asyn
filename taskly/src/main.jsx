@@ -5,6 +5,6 @@ import { Admin } from './components/admin.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Admin/>
+    <Admin initialAuthenticated={true} />
   </StrictMode>,
 )
