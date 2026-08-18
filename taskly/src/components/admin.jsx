@@ -9,6 +9,7 @@ import { Reports } from "./reports";
 import { Emails } from "./emails";
 import { Calendar } from "./calendar";
 import { Messenger } from "./messenger";
+import { Projects } from "./projects";
 import { Login } from "../pages/login";
 
 
@@ -22,7 +23,9 @@ export const Admin = ({ initialAuthenticated = false }) =>{
     }
 
     const renderContent = () => {
-        switch (activeTab) {
+        switch(activeTab){
+            case "Projects":
+                return <Projects />;
             case "Team Management":
                 return <TeamManagement />;
             case "Reports":
@@ -34,11 +37,11 @@ export const Admin = ({ initialAuthenticated = false }) =>{
             case "Messenger":
                 return <Messenger />;
             case "Login":
-                return <Login />
+                return <Login />;
             default:
                 return <Dashboard />;
         }
-    };
+    }
 
     return(
         <div className="app-shell">
@@ -46,6 +49,15 @@ export const Admin = ({ initialAuthenticated = false }) =>{
             <div className="page-layout">
                 <LeftNavbar activeTab={activeTab} onTabChange={setActiveTab} />
                 <div className="adminComponent">
+                    <div className="admin-breadcrumb">
+                        <nav className="breadcrumb">
+                            <button className="breadcrumb-link" onClick={() => setActiveTab("Dashboard")}>Workspace</button>
+                            <span className="breadcrumb-sep">&nbsp;&gt;&nbsp;</span>
+                            <button className="breadcrumb-link" onClick={() => setActiveTab("Projects")}>Projects</button>
+                            <span className="breadcrumb-sep">&nbsp;&gt;&nbsp;</span>
+                            <span className="breadcrumb-current">Admin</span>
+                        </nav>
+                    </div>
                     <nav>
                     <ul>
                         <div>

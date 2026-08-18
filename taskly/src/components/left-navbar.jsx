@@ -3,7 +3,7 @@ import logo from "/src/assets/logo.png";
 import "../styles/left-navbar.css";
 
 export const LeftNavbar = ({ activeTab, onTabChange }) => {
-    const tabs = ["Dashboard", "Team Management", "Reports", "Emails", "Calendar", "Messenger"];
+    const tabs = ["Dashboard", "Projects", "Team Management", "Reports", "Emails", "Calendar", "Messenger"];
 
     return (
    
