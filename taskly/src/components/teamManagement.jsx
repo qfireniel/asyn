@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "../styles/teamManagement.css";
 import add from "/src/assets/+.png";
 import add2 from "/src/assets/+alt.png";
@@ -9,10 +9,6 @@ export const TeamManagement = () => {
     const [teamMembers, setTeamMembers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState("");
-
-    useEffect(() => {
-        fetchTeamMembers();
-    }, []);
 
     const fetchTeamMembers = async () => {
         try {
@@ -35,6 +31,10 @@ export const TeamManagement = () => {
             setLoading(false);
         }
     };
+
+    useEffect(() => {
+        fetchTeamMembers();
+    }, []);
 
     return (
         <div className="container">

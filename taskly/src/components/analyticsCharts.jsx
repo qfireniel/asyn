@@ -9,7 +9,7 @@ import {
     Legend
 } from 'recharts';
 
-let name = "Sample Name "
+let name = "Sample Name"
 
 const statusData = [
     { name: 'Done', value: 12 },

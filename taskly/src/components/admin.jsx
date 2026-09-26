@@ -1,81 +1,27 @@
-import React, { useState } from "react";
-import user from "/src/assets/user.png"
-import headerArt from "/src/assets/web-header art.png"
+import { useState } from "react";
 import "../styles/admin.css"
-import { Dashboard } from "./dashboard";
-import { LeftNavbar } from "./left-navbar";
-import { TeamManagement } from "./teamManagement";
-import { Reports } from "./reports";
-import { Emails } from "./emails";
-import { Calendar } from "./calendar";
-import { Messenger } from "./messenger";
-import { Projects } from "./projects";
-import { Login } from "../pages/login";
+import { Signin } from "../pages/signin";
+import { Signup } from "../pages/signup";
+import { Workplaces } from "./workplaces";
 
 
 export const Admin = ({ initialAuthenticated = false }) =>{
-    let username = "qfireniel"
-    const [activeTab, setActiveTab] = useState("Dashboard");
     const [authenticated, setAuthenticated] = useState(initialAuthenticated);
+    const [authMode, setAuthMode] = useState("signin");
 
     if (!authenticated) {
-        return <Login onAuthSuccess={() => setAuthenticated(true)} />;
-    }
-
-    const renderContent = () => {
-        switch(activeTab){
-            case "Projects":
-                return <Projects />;
-            case "Team Management":
-                return <TeamManagement />;
-            case "Reports":
-                return <Reports />;
-            case "Emails":
-                return <Emails />;
-            case "Calendar":
-                return <Calendar />;
-            case "Messenger":
-                return <Messenger />;
-            case "Login":
-                return <Login />;
-            default:
-                return <Dashboard />;
+        if (authMode === "signup") {
+            return <Signup onSignInClick={() => setAuthMode("signin")} />;
         }
+
+        return (
+            <Signin
+                onAuthSuccess={() => setAuthenticated(true)}
+                onSignupClick={() => setAuthMode("signup")}
+            />
+        );
     }
 
-    return(
-        <div className="app-shell">
-         
-            <div className="page-layout">
-                <LeftNavbar activeTab={activeTab} onTabChange={setActiveTab} />
-                <div className="adminComponent">
-                    <div className="admin-breadcrumb">
-                        <nav className="breadcrumb">
-                            <button className="breadcrumb-link" onClick={() => setActiveTab("Dashboard")}>Workspace</button>
-                            <span className="breadcrumb-sep">&nbsp;&gt;&nbsp;</span>
-                            <button className="breadcrumb-link" onClick={() => setActiveTab("Projects")}>Projects</button>
-                            <span className="breadcrumb-sep">&nbsp;&gt;&nbsp;</span>
-                            <span className="breadcrumb-current">Admin</span>
-                        </nav>
-                    </div>
-                    <nav>
-                    <ul>
-                        <div>
-                            
-                        </div>
-                        <div className="user-menu">
-                        
-                        <li><img src={user} alt="user" height={30}></img></li>
-                        </div>
-                    </ul>
-                    </nav>
-
-                    <div className="tab-content" key={activeTab}>
-                        {renderContent()}
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
+    return <div className="app-shell"><Workplaces /></div>;
 }
 

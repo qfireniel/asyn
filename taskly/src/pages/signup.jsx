@@ -4,7 +4,7 @@ import LoginArt from "../assets/loginart.png";
 import logo from "../assets/simpleLogo.png";
 import { supabase } from "../supabaseClient";
 
-export const Login = ({ onAuthSuccess }) => {
+export const Signup = ({ onAuthSuccess, onSignInClick }) => {
     const [activeStage, setActiveStage] = useState(1);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -109,26 +109,10 @@ export const Login = ({ onAuthSuccess }) => {
             return;
         }
 
-        const userId = data?.user?.id;
-        const userEmail = data?.user?.email || email;
-
-        if (userId) {
-            const profileData = {
-                id: userId,
-                email: userEmail,
-                first_name: firstName,
-                last_name: lastName,
-                display_name: displayName,
-                bio,
-                role,
-            };
-
-            const { error: profileError } = await supabase.from('profiles').upsert(profileData);
-            if (profileError) {
-                setLoading(false);
-                setError(profileError.message || 'Unable to save your profile data.');
-                return;
-            }
+        if (!data?.user) {
+            setLoading(false);
+            setError('Your account could not be created. Please try again.');
+            return;
         }
 
         await supabase.auth.signOut();
@@ -141,7 +125,7 @@ export const Login = ({ onAuthSuccess }) => {
         setError('');
         setLoading(true);
 
-        const { error: signInError } = await supabase.auth.signInWithPassword({
+        const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
             email,
             password,
         });
@@ -151,6 +135,25 @@ export const Login = ({ onAuthSuccess }) => {
         if (signInError) {
             setError(signInError.message || 'Unable to sign in. Please check your credentials.');
             return;
+        }
+
+        const signedInUser = signInData?.user;
+        if (signedInUser && activeStage === 3) {
+            const { error: profileError } = await supabase.from('profiles').upsert({
+                id: signedInUser.id,
+                email: signedInUser.email || email,
+                first_name: signedInUser.user_metadata?.first_name || firstName,
+                last_name: signedInUser.user_metadata?.last_name || lastName,
+                display_name: signedInUser.user_metadata?.display_name || displayName,
+                bio: signedInUser.user_metadata?.bio || bio,
+                role: signedInUser.user_metadata?.role || role,
+            });
+
+            if (profileError) {
+                setLoading(false);
+                setError(profileError.message || 'Unable to save your profile data.');
+                return;
+            }
         }
 
         if (onAuthSuccess) {
@@ -284,7 +287,7 @@ export const Login = ({ onAuthSuccess }) => {
                             <button type="submit">Finish Setup</button>
                         </div>
                     </form>
-                );
+                ); 
             default:
                 return (
                     <form onSubmit={handleSignup}>
@@ -393,6 +396,10 @@ export const Login = ({ onAuthSuccess }) => {
                         <button type="submit" disabled={loading}>
                             {loading ? 'Signing up…' : 'Sign Up'}
                         </button>
+                        <p className="auth-switch">
+                            Already have an account?{" "}
+                            <button type="button" onClick={onSignInClick}>Sign in</button>
+                        </p>
                     </form>
                 );
         }
@@ -400,7 +407,7 @@ export const Login = ({ onAuthSuccess }) => {
 
     return (
         <div>
-            <div className="all">
+            <div className="all signup-page">
                 <section className="login-art">
                     <div className="image-art">
                         <img src={LoginArt} alt="Login art" />
