@@ -1,0 +1,154 @@
+.organization-setup {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 48px 20px;
+    background: #ffffff;
+    color: #000000;
+    font-family: 'Titillium Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.organization-setup__corner {
+    position: absolute;
+    z-index: 0;
+    max-width: 60vw;
+    max-height: 60vh;
+    opacity: 0.82;
+    pointer-events: none;
+}
+
+.organization-setup__corner--top-left {
+    top: -40px;
+    left: -40px;
+}
+
+.organization-setup__corner--bottom-right {
+    right: -40px;
+    bottom: -40px;
+}
+
+.organization-setup__panel {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 460px);
+    padding: 46px;
+    border: 2px solid #000000;
+    border-radius: 18px;
+    background: #ffffff;
+}
+
+.organization-setup__logo {
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    width: 86px;
+    max-height: 32px;
+    object-fit: contain;
+    object-position: right center;
+    filter: invert(1);
+}
+
+.organization-setup__eyebrow {
+    margin: 0 0 8px;
+    color: #000000;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.organization-setup h1 {
+    margin: 0;
+    font-size: clamp(28px, 4vw, 34px);
+    line-height: 1.08;
+}
+
+.organization-setup__intro {
+    margin: 8px 0 28px;
+    color: #333333;
+    font-size: 15px;
+}
+
+.organization-setup form {
+    display: grid;
+    gap: 11px;
+}
+
+.organization-setup label {
+    margin: 8px 0 0;
+    color: #000000;
+    font-size: 14px;
+}
+
+.organization-setup input {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 13px 14px;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #000000;
+    font: inherit;
+}
+
+.organization-setup__slug {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #333333;
+}
+
+.organization-setup__slug span {
+    padding-left: 12px;
+    white-space: nowrap;
+    font-size: 14px;
+}
+
+.organization-setup__slug input {
+    border: 0;
+    background: transparent;
+}
+
+.organization-setup input:focus {
+    outline: 2px solid #000000;
+    outline-offset: 2px;
+}
+
+.organization-setup input::placeholder {
+    color: #777777;
+}
+
+.organization-setup button {
+    margin-top: 14px;
+    padding: 12px 16px;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    background: #000000;
+    color: #ffffff;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 160ms ease, color 160ms ease;
+}
+
+.organization-setup button:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+@media (max-width: 520px) {
+    .organization-setup__panel {
+        padding: 30px 22px;
+    }
+
+    .organization-setup__corner {
+        max-width: 48vw;
+        max-height: 48vh;
+    }
+}
